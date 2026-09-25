@@ -1,0 +1,56 @@
+name: CI
+
+# Manual trigger only: automated runs on push/pull_request are intentionally
+# disabled. Run it from the Actions tab ("Run workflow") when needed; the same
+# gates can be run locally (see CONTRIBUTING.md).
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint (ruff)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install "ruff>=0.6"
+      - run: ruff check .
+      - run: ruff format --check .
+
+  test:
+    name: Types + tests (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: |
+            pyproject.toml
+            requirements-dev.txt
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+      - name: mypy --strict
+        run: mypy
+      - name: pytest with coverage
+        run: pytest --cov --cov-report=term-missing --cov-fail-under=95
+      - name: Run offline demos
+        run: |
+          python examples/email_injection_demo.py
+          python examples/mcp_tool_poisoning_demo.py
