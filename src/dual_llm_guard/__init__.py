@@ -34,15 +34,18 @@ from .exceptions import (
     UnpinnedToolError,
     UntrustedContentInPrivilegedContext,
 )
+from .llm import ChatMessage, LLMClient, ScriptedLLM
 from .symbolic_memory import PointerMetadata, Purpose, Redacted, SymbolicMemory, SymbolicPointer
 from .taint import Provenance, Trust
 
 __version__ = "0.1.0"
 
 __all__ = [
+    "ChatMessage",
     "ConfigurationError",
     "DualLLMGuardError",
     "LLMBackendError",
+    "LLMClient",
     "PlanValidationError",
     "PointerMetadata",
     "Provenance",
@@ -50,6 +53,7 @@ __all__ = [
     "QuarantineBreach",
     "QuarantineOutputError",
     "Redacted",
+    "ScriptedLLM",
     "SecurityViolation",
     "SymbolicMemory",
     "SymbolicPointer",
