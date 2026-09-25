@@ -1,0 +1,2 @@
+# Runtime dependencies (mirrors [project.dependencies] in pyproject.toml).
+pydantic>=2.6,<3
