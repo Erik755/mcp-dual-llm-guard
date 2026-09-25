@@ -36,6 +36,7 @@ from .exceptions import (
     UntrustedContentInPrivilegedContext,
 )
 from .llm import ChatMessage, LLMClient, ScriptedLLM
+from .orchestrator import DualLLMOrchestrator, RunResult
 from .policy import (
     ApprovalRequest,
     ArgumentPolicy,
@@ -45,6 +46,8 @@ from .policy import (
     email_domain_allowlist,
     matches_regex,
 )
+from .privileged_llm import Plan, PrivilegedContextGuard, PrivilegedLLM
+from .quarantined_llm import QuarantinedLLM
 from .symbolic_memory import PointerMetadata, Purpose, Redacted, SymbolicMemory, SymbolicPointer
 from .taint import Provenance, Trust
 
@@ -59,16 +62,22 @@ __all__ = [
     "ConfigurationError",
     "Decision",
     "DualLLMGuardError",
+    "DualLLMOrchestrator",
     "EventKind",
     "LLMBackendError",
     "LLMClient",
+    "Plan",
     "PlanValidationError",
     "PointerMetadata",
+    "PrivilegedContextGuard",
+    "PrivilegedLLM",
     "Provenance",
     "Purpose",
     "QuarantineBreach",
     "QuarantineOutputError",
+    "QuarantinedLLM",
     "Redacted",
+    "RunResult",
     "ScriptedLLM",
     "SecurityViolation",
     "SymbolicMemory",
