@@ -16,6 +16,7 @@ Quick tour::
     result = await orchestrator.run("Summarise my latest e-mail and send it to my boss")
 """
 
+from .audit import AuditEvent, AuditLog, Decision, EventKind
 from .exceptions import (
     ConfigurationError,
     DualLLMGuardError,
@@ -35,15 +36,30 @@ from .exceptions import (
     UntrustedContentInPrivilegedContext,
 )
 from .llm import ChatMessage, LLMClient, ScriptedLLM
+from .policy import (
+    ApprovalRequest,
+    ArgumentPolicy,
+    ToolRegistry,
+    ToolSpec,
+    UntrustedFlow,
+    email_domain_allowlist,
+    matches_regex,
+)
 from .symbolic_memory import PointerMetadata, Purpose, Redacted, SymbolicMemory, SymbolicPointer
 from .taint import Provenance, Trust
 
 __version__ = "0.1.0"
 
 __all__ = [
+    "ApprovalRequest",
+    "ArgumentPolicy",
+    "AuditEvent",
+    "AuditLog",
     "ChatMessage",
     "ConfigurationError",
+    "Decision",
     "DualLLMGuardError",
+    "EventKind",
     "LLMBackendError",
     "LLMClient",
     "PlanValidationError",
@@ -62,10 +78,15 @@ __all__ = [
     "ToolManifestChanged",
     "ToolPoisoningDetected",
     "ToolPolicyViolation",
+    "ToolRegistry",
+    "ToolSpec",
     "Trust",
     "UnauthorizedDeclassification",
     "UnknownPointerError",
     "UnpinnedToolError",
     "UntrustedContentInPrivilegedContext",
+    "UntrustedFlow",
     "__version__",
+    "email_domain_allowlist",
+    "matches_regex",
 ]
