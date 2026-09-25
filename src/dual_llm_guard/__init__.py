@@ -16,8 +16,52 @@ Quick tour::
     result = await orchestrator.run("Summarise my latest e-mail and send it to my boss")
 """
 
+from .exceptions import (
+    ConfigurationError,
+    DualLLMGuardError,
+    LLMBackendError,
+    PlanValidationError,
+    QuarantineBreach,
+    QuarantineOutputError,
+    SecurityViolation,
+    TaintFlowViolation,
+    ToolExecutionError,
+    ToolManifestChanged,
+    ToolPoisoningDetected,
+    ToolPolicyViolation,
+    UnauthorizedDeclassification,
+    UnknownPointerError,
+    UnpinnedToolError,
+    UntrustedContentInPrivilegedContext,
+)
+from .symbolic_memory import PointerMetadata, Purpose, Redacted, SymbolicMemory, SymbolicPointer
+from .taint import Provenance, Trust
+
 __version__ = "0.1.0"
 
 __all__ = [
+    "ConfigurationError",
+    "DualLLMGuardError",
+    "LLMBackendError",
+    "PlanValidationError",
+    "PointerMetadata",
+    "Provenance",
+    "Purpose",
+    "QuarantineBreach",
+    "QuarantineOutputError",
+    "Redacted",
+    "SecurityViolation",
+    "SymbolicMemory",
+    "SymbolicPointer",
+    "TaintFlowViolation",
+    "ToolExecutionError",
+    "ToolManifestChanged",
+    "ToolPoisoningDetected",
+    "ToolPolicyViolation",
+    "Trust",
+    "UnauthorizedDeclassification",
+    "UnknownPointerError",
+    "UnpinnedToolError",
+    "UntrustedContentInPrivilegedContext",
     "__version__",
 ]
