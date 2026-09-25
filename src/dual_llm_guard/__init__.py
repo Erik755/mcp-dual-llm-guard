@@ -36,6 +36,7 @@ from .exceptions import (
     UntrustedContentInPrivilegedContext,
 )
 from .llm import ChatMessage, LLMClient, ScriptedLLM
+from .mcp_adapter import MCPImportReport, MCPToolPolicy, register_mcp_tools
 from .orchestrator import DualLLMOrchestrator, RunResult
 from .policy import (
     ApprovalRequest,
@@ -50,6 +51,7 @@ from .privileged_llm import Plan, PrivilegedContextGuard, PrivilegedLLM
 from .quarantined_llm import QuarantinedLLM
 from .symbolic_memory import PointerMetadata, Purpose, Redacted, SymbolicMemory, SymbolicPointer
 from .taint import Provenance, Trust
+from .tool_manifest import ManifestPinStore, PoisoningScanner, ToolManifest
 
 __version__ = "0.1.0"
 
@@ -66,9 +68,13 @@ __all__ = [
     "EventKind",
     "LLMBackendError",
     "LLMClient",
+    "MCPImportReport",
+    "MCPToolPolicy",
+    "ManifestPinStore",
     "Plan",
     "PlanValidationError",
     "PointerMetadata",
+    "PoisoningScanner",
     "PrivilegedContextGuard",
     "PrivilegedLLM",
     "Provenance",
@@ -84,6 +90,7 @@ __all__ = [
     "SymbolicPointer",
     "TaintFlowViolation",
     "ToolExecutionError",
+    "ToolManifest",
     "ToolManifestChanged",
     "ToolPoisoningDetected",
     "ToolPolicyViolation",
@@ -98,4 +105,5 @@ __all__ = [
     "__version__",
     "email_domain_allowlist",
     "matches_regex",
+    "register_mcp_tools",
 ]
