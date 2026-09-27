@@ -45,3 +45,21 @@ async def test_mcp_tool_poisoning_demo(capsys: pytest.CaptureFixture[str]) -> No
     assert "REJECTED fetch_url: ToolPoisoningDetected" in out
     assert "REJECTED read_email: ToolManifestChanged" in out
     assert "planner saw 'evil.example'? False" in out
+
+
+async def test_live_llm_demo_exits_cleanly_without_api_key(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    pytest.importorskip("httpx")
+    demo = _load("live_llm_demo")
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.setattr(sys, "argv", ["live_llm_demo.py"])
+    with pytest.raises(SystemExit) as excinfo:
+        await demo.main()
+    assert excinfo.value.code == 1
+    captured = capsys.readouterr()
+    assert captured.out == ""
+    assert "OPENAI_API_KEY is not set" in captured.err
+    assert "export OPENAI_API_KEY=" in captured.err
+    assert "--no-key" in captured.err
+    assert "examples/email_injection_demo.py" in captured.err
