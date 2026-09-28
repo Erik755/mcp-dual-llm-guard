@@ -11,6 +11,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![mypy: strict](https://img.shields.io/badge/mypy-strict-2A6DB2)](pyproject.toml)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![M8ven Score](https://m8ven.ai/badge/mcp/erik755/mcp-dual-llm-guard)](https://m8ven.ai/mcp/erik755/mcp-dual-llm-guard)
 
 </div>
 
