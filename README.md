@@ -12,6 +12,7 @@
 [![mypy: strict](https://img.shields.io/badge/mypy-strict-2A6DB2)](pyproject.toml)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![M8ven Score](https://m8ven.ai/badge/mcp/erik755-mcp-dual-llm-guard-m0uqf4?v=b20d1da1ff953eda4c01d8111c34b71b)](https://m8ven.ai/mcp/erik755-mcp-dual-llm-guard-m0uqf4)
+[![M8ven Verified](https://m8ven.ai/api/agent-verify/badge?score=75)](https://m8ven.ai/verified/verify?id=a5dad922de9566da)
 
 </div>
 
